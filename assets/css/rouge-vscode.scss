@@ -1,0 +1,45 @@
+---
+---
+:root {
+  --rouge-bg: rgb(255, 255, 255);
+  --rouge-text: rgb(0, 0, 0);
+  --rouge-c: rgb(0, 128, 0);
+  --rouge-s: rgb(163, 21, 21);
+  --rouge-nb: rgb(121, 94, 38);
+  --rouge-nx: rgb(0, 16, 128);
+  --rouge-k: rgb(0, 0, 255);
+}
+
+.theme-dark {
+  --rouge-bg: rgb(30, 30, 30);
+  --rouge-text: rgb(212, 212, 212);
+  --rouge-c: rgb(106, 153, 85);
+  --rouge-s: rgb(206, 145, 120);
+  --rouge-nb: rgb(220, 220, 170);
+  --rouge-nx: rgb(156, 220, 254);
+  --rouge-k: rgb(86, 156, 214);
+}
+
+.highlighter-rouge {
+  background-color: var(--rouge-bg);
+  color: var(--rouge-text);
+  pre.highlight code {
+    .c, .c1, .cm {
+      color: var(--rouge-c);
+    }
+    .s1, .s2 {
+      color: var(--rouge-s);
+    }
+    .nb, .kd + .nx {
+      color: var(--rouge-nb)
+    }
+    .nx {
+      color: var(--rouge-nx);
+    }
+    .kd {
+      color: var(--rouge-k);
+    }
+  }
+}
+
+

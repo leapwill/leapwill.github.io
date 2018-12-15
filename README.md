@@ -1,2 +1,3 @@
 # leapwill.github.io
-This is a repository initially created for the ACM Git workshop at UTD.
+
+[Check it out!](https://leapwill.github.io/)

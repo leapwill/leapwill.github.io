@@ -1,0 +1,37 @@
+<nav>
+  <ul>
+    {% for item in site.data.navigation %}
+      <li {% if page.url == item.link %}class="nav-item-active"{% endif %}>
+        {% if item.link %}
+          <a href="{{ item.link }}">{{ item.name }}</a>
+        {% else %}
+          {{ item.name }}
+        {% endif %}
+        {% if item.children %}
+          <ul>
+          {% for child in item.children %}
+            <li {% if page.url == child.link %}class="nav-item-active"{% endif %}>
+              <a href="{{ child.link }}">{{ child.name }}</a>
+            </li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  <div id="nav-footer" class="text-center">
+    <button type="button" class="d-block mx-auto btn-bare font-large" onclick="toggleTheme()">
+      <i class="far fa-lightbulb"></i>
+    </button>
+    <span class="text-muted font-small">
+      Layout inspired by <br>
+      <a href="https://lodash.com/docs/">Lodash Documentation</a><br>
+      Utility CSS inspired by <br>
+      <a href="https://getbootstrap.com/">Bootstrap</a><br>
+      Icons from <br>
+      <a href="https://fontawesome.com/">FontAwesome</a><br>
+      Colors from <br>
+      <a href="https://code.visualstudio.com/">Visual Studio Code</a><br>
+    </span>
+  </div>
+</nav>

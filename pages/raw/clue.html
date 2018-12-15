@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Clue Note Sheet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <form id="form" style="max-width: 6in;">
+    <section>
+      <h2 style="margin-top: 0;">Suspects</h2>
+      <div id="suspects">
+
+      </div>
+    </section>
+    <section>
+      <h2>Weapons</h2>
+      <div id="weapons">
+
+      </div>
+    </section>
+    <section>
+      <h2>Rooms</h2>
+      <div id="rooms">
+
+      </div>
+    </section>
+    <input class="button" type="submit" value="Save">
+    <button class="button" type="button" onclick="reset()">Reset</button>
+  </form>
+</body>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  :root {
+    --primary-bg: #fff;
+    --secondary-bg: #ddd;
+    --accent-bg: #bceebc;
+    --primary-text: #000;
+  }
+
+  .theme-dark {
+    --primary-bg: #000;
+    --secondary-bg: #333;
+    --accent-bg: #031;
+    --primary-text: #eee;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: var(--primary-bg);
+    color: var(--primary-text);
+  }
+
+  .row {
+    background-color: var(--secondary-bg);
+  }
+
+  .row:nth-of-type(even) {
+    background-color: var(--accent-bg);
+  }
+
+  .col-6 {
+    display: inline-block;
+    padding: 4px 10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .row {
+      border-bottom: 1px solid gray;
+    }
+
+    .col-6 {
+      display: block;
+    }
+
+    .button {
+      width: 45%;
+      height: 4em;
+    }
+  }
+</style>
+
+<script>
+  var names = {
+    'suspects': ['Colonel Mustard', 'Professor Plum', 'Mr. Green', 'Mrs. Peacock', 'Miss Scarlet', 'Mrs. White'],
+    'weapons': ['Knife', 'Candlestick', 'Revolver', 'Rope', 'Lead Pipe', 'Wrench'],
+    'rooms': ['Hall', 'Lounge', 'Dining Room', 'Kitchen', 'Ballroom', 'Conservatory', 'Billiard Room', 'Library', 'Study']
+  }
+
+  function setup() {
+    let resume = JSON.parse(localStorage.getItem('clueData'));
+    Object.keys(names).forEach((nameType) => {
+      let el = document.getElementById(nameType);
+      names[nameType].forEach((name) => {
+        let key = nameType + '_' + name.replace(/[\s\.]+/g, '');
+        el.innerHTML += (`
+<div class="row">
+    <div class="col-6">
+        <label>
+            ${name}&nbsp;<input type="checkbox" name="${key}_Check" style="float: right;">
+        </label>
+    </div>
+    <div class="col-6">
+        <input type="text" name="${key}_Text" style="width: 100%;">
+    </div>
+</div>`);
+
+        setTimeout(() => {
+          document.querySelector(`input[name=${key}_Check]`).checked = resume ? resume[key + '_Check'] : false;
+          document.querySelector(`input[name=${key}_Text]`).value = resume ? resume[key + '_Text'] : '';
+        }, 500);
+      });
+    });
+
+    if (localStorage.getItem('themeDark') === 'true') {
+      document.querySelector('body').classList.add('theme-dark');
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', setup);
+
+  function save() {
+
+    if (document.querySelector('input[name="rooms_Study_Text"]').value === 'dark') {
+      let body = document.querySelector('body');
+      if (body.classList.contains('theme-dark')) {
+        body.classList.remove('theme-dark');
+        localStorage.setItem('themeDark', 'false');
+      } else {
+        body.classList.add('theme-dark');
+        localStorage.setItem('themeDark', 'true');
+      }
+    }
+
+    let saveData = {};
+    Object.keys(names).forEach((nameType) => {
+      let el = document.getElementById(nameType);
+      names[nameType].forEach((name) => {
+        let key = nameType + '_' + name.replace(/[\s\.]+/g, '');
+        saveData[key + '_Check'] = document.querySelector(`input[name=${key}_Check]`).checked;
+        saveData[key + '_Text'] = document.querySelector(`input[name=${key}_Text]`).value;
+      });
+    });
+
+    localStorage.setItem('clueData', JSON.stringify(saveData));
+  }
+
+  document.getElementById('form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    save();
+  });
+
+  function reset() {
+    localStorage.removeItem('clueData');
+    window.scrollTo(0, 0);
+    window.location.reload(false);
+  }
+</script>
+
+</html>

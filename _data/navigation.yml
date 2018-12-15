@@ -1,0 +1,18 @@
+- name: Home
+  link: /
+- name: My Repositories
+  link: https://github.com/leapwill?tab=repositories
+- name: Web Projects
+  children:
+  - name: Github Pages
+    link: https://github.com/leapwill/leapwill.github.io
+  - name: Notes for Clue
+    link: /pages/raw/clue.html
+- name: Useful Configs
+  children:
+  - name: Windows
+    link: /pages/configs/windows.html
+  - name: Linux
+    link: /pages/configs/linux.html
+  - name: Firefox
+    link: /pages/configs/firefox.html
