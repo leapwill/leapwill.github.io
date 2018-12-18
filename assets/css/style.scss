@@ -32,7 +32,6 @@
 }
 
 /* TODO: ordering properties here to bottom */
-/* TODO: fix scrolling */
 
 body {
   min-height: 100%;
@@ -128,8 +127,7 @@ nav {
   background-color: var(--bg-1);
   padding: 2em;
   max-width: 100vw;
-  min-height: 100%;
-  height: auto;
+  min-height: calc(100vh - 3rem);
   cursor: auto;
   main {
     max-width: 6in;
@@ -182,14 +180,14 @@ code.highlighter-rouge {
     margin-left: auto;
   }
   nav {
-    height: calc(100% - 3rem);
     width: 250px;
-    position: absolute;
+    height: calc(100% - 3rem);
+    position: fixed;
     right: 0;
+    z-index: 2;
     transform: translateX(250px);
     transition: transform 0.15s linear;
     &.nav-open {
-      z-index: 2;
       transform: translateX(0);
     }
     border-right: none;
