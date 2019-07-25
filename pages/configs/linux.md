@@ -20,8 +20,10 @@ alias ln='ln -v'
 
 # Development shortcuts
 alias gits='git status'
+alias gitdc='git diff --cached'
 alias grep-node='grep --exclude-dir=node_modules'
 alias nr='npm run'
+alias mvnci='mvn clean install'
 
 # Miscellaneous
 alias p1='ping 1.1.1.1'

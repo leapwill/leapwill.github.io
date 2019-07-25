@@ -15,3 +15,4 @@ title: Windows
 * [Avoid Bing and Cortana from taskbar search](https://superuser.com/a/1171262)
 * [Disable Aero Shake](https://www.howtogeek.com/howto/windows-7/disable-aero-shake-in-windows-7/)
 * [Disable automatic restart for Windows Update](https://www.askvg.com/how-to-change-windows-update-settings-when-managed-or-disabled-by-system-administrator/)
+* [Hide 3D Objects library from File Explorer](https://www.howtogeek.com/331361/how-to-remove-the-3d-objects-folder-from-this-pc-on-windows-10/)

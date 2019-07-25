@@ -6,10 +6,7 @@ title: Firefox
 #### Privacy
 
 * [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/) – Efficient general-purpose ad blocker.
-* [Decentraleyes](https://addons.mozilla.org/en-US/firefox/addon/decentraleyes/) – Locally cache popular assets to reduce tracking by requests.
-* [HTTPS Everywhere](https://addons.mozilla.org/en-US/firefox/addon/https-everywhere/) – Ensure a redirect to HTTPS on sites that support it.
-* [Canvas Defender](https://addons.mozilla.org/en-US/firefox/addon/no-canvas-fingerprinting/) – Periodically change the canvas fingerprint.
-* [Disable WebRTC](https://addons.mozilla.org/en-US/firefox/addon/happy-bonobo-disable-webrtc/) – Prevent viewing of WebRTC hardware fingerprints.
+* [privacytools.io](https://www.privacytools.io/browsers/) – Guide to enhancing the privacy of Firefox.
 
 #### Utility
 
@@ -25,4 +22,5 @@ title: Firefox
 
 * Search engine: [DuckDuckGo](https://duckduckgo.com/) – Check out [all these shortcuts](https://duckduckgo.com/bang), and extra privacy as well.
 * Theme: Dark by Mozilla
+* Disable fade transition to full screen: in `about:config`, set `full-screen-api.transition-duration.enter` and `full-screen-api.transition-duration.enter` to `0 0`
 
