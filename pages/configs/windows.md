@@ -22,9 +22,5 @@ title: Windows
 - [Disable Focus Assist notifications](https://www.howtogeek.com/435349/how-to-disable-windows-10s-annoying-focus-assist-notifications/)
 - Disable automatic wakeups and restarts for Windows Update:
   - Get [SysInternals PsTools for PsExec](https://docs.microsoft.com/en-us/sysinternals/downloads/psexec)
-  - Use [this command](https://superuser.com/a/1295461) to disable the following services:
-  ```
-  \Microsoft\Windows\UpdateOrchestrator\Reboot
-  \Microsoft\Windows\UpdateOrchestrator\Universal Orchestrator Idle Start
-  ```
+  - Follow the [instructions here](https://github.com/seagull/disable-automaticrestarts/issues/4#issuecomment-521382489)
   - Alternatively, go into advanced power plan options and disable wake timers
