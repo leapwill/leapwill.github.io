@@ -164,6 +164,15 @@ pre {
   background-color: var(--bg-5) !important;
   border-radius: 1em;
   user-select: contain; /* In CSS UI 4. Not yet supported, especially without prefix. */
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.highlighter-rouge > .highlight { /* Include the scrollbar in border-radius */
+  border-radius: 1em;
+  overflow: hidden;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
 }
 
 code.highlighter-rouge {
