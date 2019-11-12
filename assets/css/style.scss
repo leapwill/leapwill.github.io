@@ -201,6 +201,8 @@ code.highlighter-rouge {
       transition: left 0.15s ease-out;
       .btn-menu-bar {
         transition: all 0.15s ease-out;
+        transform-origin: center left;
+        transform-origin: center left;
         flex: 0 0 auto;
         content: "";
         height: 0.125em;
@@ -211,15 +213,13 @@ code.highlighter-rouge {
     & > div.nav-open {
       left: 0.1464em;
       :first-child {
-        transform: rotateZ(45deg);
-        transform-origin: center left;
+        transform: rotate(45deg);
       }
       :nth-child(2) {
         opacity: 0;
       }
       :last-child {
-        transform: rotateZ(-45deg);
-        transform-origin: center left;
+        transform: rotate(-45deg);
       }
     }
   }
