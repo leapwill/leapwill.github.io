@@ -31,8 +31,6 @@
   --contrast: #e1e1e1;
 }
 
-/* TODO: ordering properties here to bottom */
-
 body {
   min-height: 100%;
   height: 100%;
@@ -40,7 +38,8 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--bg-5); /* maybe not necessary */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: var(--color);
   line-height: 1.5;
 }
@@ -103,7 +102,7 @@ nav {
         left: 100%;
         width: 0;
         height: 0;
-        content: '';
+        content: "";
         border-left: 1em solid var(--bg-1);
         border-top: 0.9em solid transparent;
         border-bottom: 0.9em solid transparent;
@@ -134,7 +133,8 @@ nav {
   }
 }
 
-button, *[onclick] {
+button,
+*[onclick] {
   cursor: pointer;
 }
 
@@ -150,7 +150,10 @@ a:visited {
   color: currentColor;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   margin: 0;
 }
 
@@ -168,7 +171,8 @@ pre {
   margin-block-end: 0;
 }
 
-.highlighter-rouge > .highlight { /* Include the scrollbar in border-radius */
+.highlighter-rouge > .highlight {
+  /* Include the scrollbar in border-radius */
   border-radius: 1em;
   overflow: hidden;
   margin-block-start: 1em;
@@ -187,6 +191,37 @@ code.highlighter-rouge {
     display: block;
     font-size: 2em;
     margin-left: auto;
+    align-self: center;
+    & > div {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-around;
+      height: 1em;
+      position: relative;
+      transition: left 0.15s ease-out;
+      .btn-menu-bar {
+        transition: all 0.15s ease-out;
+        transform-origin: center left;
+        transform-origin: center left;
+        flex: 0 0 auto;
+        content: "";
+        height: 0.125em;
+        width: 1em;
+        background-color: var(--color);
+      }
+    }
+    & > div.nav-open {
+      left: 0.1464em;
+      :first-child {
+        transform: rotate(45deg);
+      }
+      :nth-child(2) {
+        opacity: 0;
+      }
+      :last-child {
+        transform: rotate(-45deg);
+      }
+    }
   }
   nav {
     width: 250px;
@@ -195,7 +230,7 @@ code.highlighter-rouge {
     right: 0;
     z-index: 2;
     transform: translateX(250px);
-    transition: transform 0.15s linear;
+    transition: transform 0.15s ease-out;
     &.nav-open {
       transform: translateX(0);
     }
@@ -207,7 +242,7 @@ code.highlighter-rouge {
         right: 100%;
         width: 0;
         height: 0;
-        content: '';
+        content: "";
         border-right: 1em solid var(--bg-1);
         border-top: 0.9em solid transparent;
         border-bottom: 0.9em solid transparent;
@@ -219,7 +254,7 @@ code.highlighter-rouge {
   }
   nav.nav-open + #main-container::after {
     display: block;
-    content: '';
+    content: "";
     background: var(--bg-1);
     opacity: 0.5;
     position: absolute;

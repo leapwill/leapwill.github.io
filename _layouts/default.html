@@ -7,7 +7,7 @@
   <title>{{ page.title }} | Will's Pages</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css" />
-  <link rel="stylesheet" type="text/css" href="assets/icons/icomoon.css">
+  <link rel="stylesheet" type="text/css" href="/assets/icons/icomoon.css">
   <script src="/assets/js/main.js"></script>
 </head>
 
@@ -16,7 +16,13 @@
     <a href="/"><img src="https://avatars0.githubusercontent.com/u/8891945"></a>
     <h1>Will's Pages</h1>
     <button id="btn-menu" class="btn-bare d-none" type="button" onclick="toggleMenu()">
-      <i class="icon-bars"></i></button>
+      <div>
+        <div class="btn-menu-bar"></div>
+        <div class="btn-menu-bar"></div>
+        <div class="btn-menu-bar"></div>
+      </div>
+    </button>
+
   </header>
   <div id="page">
     {% include navigation.html %}
@@ -29,7 +35,6 @@
     </div>
   </div>
 </body>
-
 <link rel="stylesheet" type="text/css" href="/assets/css/rouge-vscode.css">
 
 </html>
