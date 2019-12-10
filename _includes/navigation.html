@@ -1,19 +1,23 @@
 <nav>
   <ul>
     {% for item in site.data.navigation %}
-      <li {% if page.url == item.link %}class="nav-item-active"{% endif %}>
+      <li>
         {% if item.link %}
-          <a href="{{ item.link }}">{{ item.name }}</a>
-        {% else %}
-          {{ item.name }}
+          <a href="{{ item.link }}">
+        {% endif %}
+            <div {% if page.url == item.link %}class="nav-item-active" {% endif %}>{{ item.name }}</div>
+        {% if item.link %}
+          </a>
         {% endif %}
         {% if item.children %}
           <ul>
-          {% for child in item.children %}
-            <li {% if page.url == child.link %}class="nav-item-active"{% endif %}>
-              <a href="{{ child.link }}">{{ child.name }}</a>
-            </li>
-          {% endfor %}
+            {% for child in item.children %}
+              <li>
+                <a href="{{ child.link }}">
+                  <div {% if page.url == child.link %}class="nav-item-active" {% endif %}>{{ child.name }}</div>
+                </a>
+              </li>
+            {% endfor %}
           </ul>
         {% endif %}
       </li>
