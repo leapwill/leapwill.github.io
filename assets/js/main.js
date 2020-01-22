@@ -1,3 +1,4 @@
+"use strict";
 function toggleTheme() {
   document.querySelector("body").classList.toggle("theme-dark");
 }
@@ -16,3 +17,22 @@ function toggleMenu(forcedState) {
     el2.classList.add("nav-open");
   }
 }
+
+function onLoad() {
+  // restore theme
+  let theme = JSON.parse(localStorage.getItem("isThemeLight"));
+  if (theme) {
+    toggleTheme();
+  }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", onLoad);
+} else {
+  onLoad();
+}
+
+window.addEventListener("beforeunload", event => {
+  let theme = document.querySelector("body").classList.contains("theme-dark");
+  localStorage.setItem("isThemeLight", JSON.stringify(!theme));
+});
