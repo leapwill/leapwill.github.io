@@ -8,6 +8,7 @@ title: Firefox
 
 - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/) – Efficient general-purpose ad blocker.
 - [privacytools.io](https://www.privacytools.io/browsers/) – Guide to enhancing the privacy of Firefox.
+  - [Smart Referer](https://addons.mozilla.org/en-US/firefox/addon/smart-referer/) – for the sites that break due to XOriginTrimming
 
 #### Utility
 

@@ -7,9 +7,9 @@ title: Linux Configs
 ```bash
 # System Utilities
 alias sudo='sudo '
-alias ls='ls --color=auto'
-alias ll='ls -l'
-alias la='ls -a'
+alias ls='ls --color=auto -F'
+alias ll='ls -lh'
+alias la='ls -A'
 alias grep='grep --color=auto'
 alias grepr='grep -rni'
 alias cp='cp -i'
@@ -19,6 +19,7 @@ alias df='df -h'
 alias du='du -h'
 alias q='exit'
 alias ln='ln -v'
+alias top='htop'
 
 # Development shortcuts
 alias grep-node='grep --exclude-dir=node_modules'
