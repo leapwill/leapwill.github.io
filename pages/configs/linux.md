@@ -35,9 +35,9 @@ alias tr1='traceroute 1.1.1.1'
 
 ```bash
 # Git aliases
-git config --global alias.s status
-git config --global alias.dc 'diff --cached'
-git config --global alias.last 'log -1 HEAD'
-git config --global alias.unstage 'reset HEAD --'
-git config --global alias.branch 'branch -vv'
+git config --global alias.s "status"
+git config --global alias.dc "diff --cached"
+git config --global alias.last "log -1 HEAD"
+git config --global alias.unstage "reset HEAD --"
+git config --global alias.branch "branch -vv"
 ```
