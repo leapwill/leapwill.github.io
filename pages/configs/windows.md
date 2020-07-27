@@ -5,6 +5,7 @@ title: Windows
 ### Utilities
 
 - [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about) – Real Bash and \*nix programs inside Windows
+- [Windows Terminal](https://github.com/microsoft/terminal) - Tabs and more!
 - [Sysinternals](https://docs.microsoft.com/en-us/sysinternals/)
 - [NirSoft](http://nirsoft.net)
 - [Hot-reload Command Prompt environment variables](https://github.com/chocolatey-archive/chocolatey/blob/master/src/redirects/RefreshEnv.cmd)
@@ -29,3 +30,13 @@ title: Windows
   - Get [SysInternals PsTools for PsExec](https://docs.microsoft.com/en-us/sysinternals/downloads/psexec)
   - Follow the [instructions here](https://github.com/seagull/disable-automaticrestarts/issues/4#issuecomment-521382489)
   - Alternatively, go into advanced power plan options and disable wake timers
+
+### PowerShell Profile
+
+Get a more Bash-like typing experience, including `Ctrl`+`D` to exit and pause on ambiguous tab completion.
+
+```PowerShell
+Set-PSReadLineOption -EditMode "Emacs"
+Set-PSReadLineKeyHandler -Chord Ctrl+LeftArrow BackwardWord
+Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow ForwardWord
+```
