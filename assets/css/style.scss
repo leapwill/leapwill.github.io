@@ -17,7 +17,7 @@
   --accent: #d69955;
 }
 
-:focus {
+:focus-visible, :-moz-focusring {
   outline: solid var(--accent) thin;
 }
 

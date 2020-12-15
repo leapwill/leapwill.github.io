@@ -33,10 +33,39 @@ title: Windows
 
 ### PowerShell Profile
 
-Get a more Bash-like typing experience, including `Ctrl`+`D` to exit and pause on ambiguous tab completion.
-
 ```PowerShell
+if ($(Get-Location).Path -eq 'C:\WINDOWS\system32') {
+    Set-Location $Env:USERPROFILE
+}
 Set-PSReadLineOption -EditMode "Emacs"
 Set-PSReadLineKeyHandler -Chord Ctrl+LeftArrow BackwardWord
 Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow ForwardWord
+Set-PSReadLineKeyHandler -Chord Ctrl+Shift+LeftArrow SelectBackwardWord
+Set-PSReadLineKeyHandler -Chord Ctrl+Shift+RightArrow SelectForwardWord
+
+$PSDefaultParameterValues['*:Encoding'] = 'utf8'
+$Env:PYTHONIOENCODING = 'utf-8'
+
+function b {
+    param(
+        [Parameter(Position=0,Mandatory=$true)]
+        [int]
+        $Brightness
+    )
+    controlmymonitor /SetValue Primary 10 $Brightness
+}
+
+function Set-SuspendState {
+    param(
+        [Parameter(Position=0,Mandatory=$true)]
+        [int]
+        $Minutes,
+        [System.Windows.Forms.PowerState]
+        $PowerState = [System.Windows.Forms.PowerState]::Suspend
+    )
+    Add-Type -AssemblyName System.Windows.Forms
+    Start-Sleep -Seconds $(60*$Minutes)
+    [System.Windows.Forms.Application]::SetSuspendState($PowerState, $true, $true)
+}
+
 ```
