@@ -40,4 +40,5 @@ git config --global alias.dc "diff --cached"
 git config --global alias.last "log -1 HEAD"
 git config --global alias.unstage "reset HEAD --"
 git config --global alias.branch "branch -vv"
+git config --global alias.graph "log --graph --abrev-commit --decorate=short --all --format=oneline"
 ```
