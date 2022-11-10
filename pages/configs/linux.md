@@ -2,6 +2,13 @@
 title: Linux Configs
 ---
 
+### Helpful Tools & Links
+
+[Shellcheck](https://www.shellcheck.net/)
+
+[The Sharat's Shell Script Best Practices](https://sharats.me/posts/shell-script-best-practices/)
+
+
 ### Aliases
 
 ```bash
