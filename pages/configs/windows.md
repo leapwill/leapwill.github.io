@@ -31,9 +31,10 @@ title: Windows
   - Follow the [instructions here](https://github.com/seagull/disable-automaticrestarts/issues/4#issuecomment-521382489)
   - Alternatively, go into advanced power plan options and disable wake timers
 
-### PowerShell Profile
+### PowerShell Profile and Utilities
 
-```PowerShell
+```powershell
+Set-StrictMode -Version Latest
 if ($(Get-Location).Path -eq 'C:\WINDOWS\system32') {
     Set-Location $Env:USERPROFILE
 }
@@ -46,14 +47,46 @@ Set-PSReadLineKeyHandler -Chord Ctrl+Shift+RightArrow SelectForwardWord
 $PSDefaultParameterValues['*:Encoding'] = 'utf8'
 $Env:PYTHONIOENCODING = 'utf-8'
 
-function b {
+# window title https://stackoverflow.com/q/29211928
+if (-not (Get-Variable _windowTitleDefault -ValueOnly -ErrorAction SilentlyContinue)) {
+    $global:_windowTitleDefault = $host.ui.rawui.WindowTitle
+}
+function prompt {
+    $host.ui.rawui.WindowTitle = "$_windowTitleDefault : $($executionContext.SessionState.Path.CurrentLocation | Split-Path -Leaf)"
+    return "PS $($executionContext.SessionState.Path.CurrentLocation)$('>' * ($nestedPromptLevel + 1)) ";
+}
+Set-PSReadLineKeyHandler -Key Enter `
+                         -BriefDescription RunWithTitle `
+                         -LongDescription "Set the console title to the command, then run the command" `
+                         -ScriptBlock {
+    param($key, $arg)
+
+    $line = $null
+    $cursor = $null
+    [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+    if ($line.Length -gt 1023) {
+        $Host.UI.RawUI.WindowTitle = $line.Substring(0,1023)
+    }
+    else {   
+        $Host.UI.RawUI.WindowTitle = $line
+    }
+    [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+}
+
+if ($PSEdition -eq 'Core'){
+    $PSStyle.Progress.View = 'Classic'
+}
+
+function Set-DisplayBrightness {
     param(
         [Parameter(Position=0,Mandatory=$true)]
         [int]
         $Brightness
     )
+    # https://www.nirsoft.net/utils/control_my_monitor.html
     controlmymonitor /SetValue Primary 10 $Brightness
 }
+Set-Alias b Set-DisplayBrightness
 
 function Set-SuspendState {
     param(
@@ -68,4 +101,45 @@ function Set-SuspendState {
     [System.Windows.Forms.Application]::SetSuspendState($PowerState, $true, $true)
 }
 
+function touch {
+    param(
+        [Parameter(Mandatory,Position=1)][string]$Item,
+        [DateTime]$t = (Get-Date),
+        [ValidateSet('CreationTime','CreationTimeUtc','LastAccessTime','LastAccessTimeUtc','LastWriteTime','LastWriteTimeUtc')]
+        [string]$Time = 'LastWriteTime'
+    )
+    if (-not (Test-Path -LiteralPath $Item)) {
+        New-Item $Item >$null
+    }
+    Get-Item $Item | % {
+        $_.$Time = $t
+    }
+}
+
+function unset-histfile {
+    Set-PSReadLineOption -HistorySaveStyle SaveNothing
+}
+
+function bell {
+    echo "`a"
+}
+
+function beep {
+    param(
+        [Parameter(Position=0)]
+        [int]
+        $Frequency = 1000,
+        [Parameter(Position=1)]
+        [int]
+        $Milliseconds = 1000
+    )
+    [Console]::Beep($Frequency, $Milliseconds)
+}
+
+function sha256sum { 
+    param([Parameter(Mandatory,Position=1)][string]$Path)
+    (Get-FileHash -Path $Path).Hash.ToLower()
+}
+
+Set-StrictMode -Off
 ```

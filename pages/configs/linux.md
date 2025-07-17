@@ -48,4 +48,12 @@ git config --global alias.last "log -1 HEAD"
 git config --global alias.unstage "reset HEAD --"
 git config --global alias.branch "branch -vv"
 git config --global alias.graph "log --graph --abrev-commit --decorate=short --all --format=oneline"
+git config --global alias.diffw "diff --word-diff"
+git config --global alias.pushf "push --force-with-lease"
+git config --global rerere.enabled true
+git config --global rerere.autoUpdate true
+git config --global branch.sort -committerdate
+git config --global column.ui auto
+git config --global gpg.format ssh
+git config --global user.signingKey "~/..."
 ```
